@@ -1,0 +1,193 @@
+Model: "model_5"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_3 (InputLayer)           [(None, 240, 108, 3  0           []                               
+                                )]                                                                
+                                                                                                  
+ conv2d_40 (Conv2D)             (None, 240, 108, 64  1728        ['input_3[0][0]']                
+                                )                                                                 
+                                                                                                  
+ batch_normalization_40 (BatchN  (None, 240, 108, 64  256        ['conv2d_40[0][0]']              
+ ormalization)                  )                                                                 
+                                                                                                  
+ activation_36 (Activation)     (None, 240, 108, 64  0           ['batch_normalization_40[0][0]'] 
+                                )                                                                 
+                                                                                                  
+ sequential_5 (Sequential)      (None, 30, 14, 512)  11176448    ['activation_36[0][0]']          
+                                                                                                  
+ dense_10_input (InputLayer)    [(None, 18)]         0           []                               
+                                                                                                  
+ flatten_2 (Flatten)            (None, 215040)       0           ['sequential_5[0][0]']           
+                                                                                                  
+ dense_10 (Dense)               (None, 8)            152         ['dense_10_input[0][0]']         
+                                                                                                  
+ dense_12 (Dense)               (None, 4)            860164      ['flatten_2[0][0]']              
+                                                                                                  
+ dense_11 (Dense)               (None, 4)            36          ['dense_10[0][0]']               
+                                                                                                  
+ activation_53 (Activation)     (None, 4)            0           ['dense_12[0][0]']               
+                                                                                                  
+ concatenate_2 (Concatenate)    (None, 8)            0           ['dense_11[0][0]',               
+                                                                  'activation_53[0][0]']          
+                                                                                                  
+ dense_13 (Dense)               (None, 8)            72          ['concatenate_2[0][0]']          
+                                                                                                  
+ dense_14 (Dense)               (None, 4)            36          ['dense_13[0][0]']               
+                                                                                                  
+==================================================================================================
+Total params: 12,038,892
+Trainable params: 12,029,292
+Non-trainable params: 9,600
+__________________________________________________________________________________________________
+batch_input_shape: (None, 240, 108, 3)
+dtype: float32
+sparse: False
+ragged: False
+name: input_3
+
+name: conv2d_40
+trainable: True
+dtype: float32
+filters: 64
+kernel_size: (3, 3)
+strides: (1, 1)
+padding: same
+data_format: channels_last
+dilation_rate: (1, 1)
+groups: 1
+activation: linear
+use_bias: False
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: batch_normalization_40
+trainable: True
+dtype: float32
+axis: ListWrapper([3])
+momentum: 0.99
+epsilon: 0.001
+center: True
+scale: True
+beta_initializer: {'class_name': 'Zeros', 'config': {}}
+gamma_initializer: {'class_name': 'Ones', 'config': {}}
+moving_mean_initializer: {'class_name': 'Zeros', 'config': {}}
+moving_variance_initializer: {'class_name': 'Ones', 'config': {}}
+beta_regularizer: None
+gamma_regularizer: None
+beta_constraint: None
+gamma_constraint: None
+
+name: activation_36
+trainable: True
+dtype: float32
+activation: relu
+
+name: sequential_5
+layers: [{'class_name': 'InputLayer', 'config': {'batch_input_shape': (None, 240, 108, 64), 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'resnet_block_16_input'}}, {'class_name': 'ResnetBlock', 'config': {'residual_path': False, 'filters': 64}}, {'class_name': 'ResnetBlock', 'config': {'residual_path': False, 'filters': 64}}, {'class_name': 'ResnetBlock', 'config': {'strides': 2, 'residual_path': True, 'filters': 128}}, {'class_name': 'ResnetBlock', 'config': {'residual_path': False, 'filters': 128}}, {'class_name': 'ResnetBlock', 'config': {'strides': 2, 'residual_path': True, 'filters': 256}}, {'class_name': 'ResnetBlock', 'config': {'residual_path': False, 'filters': 256}}, {'class_name': 'ResnetBlock', 'config': {'strides': 2, 'residual_path': True, 'filters': 512}}, {'class_name': 'ResnetBlock', 'config': {'residual_path': False, 'filters': 512}}]
+
+batch_input_shape: (None, 18)
+dtype: float32
+sparse: False
+ragged: False
+name: dense_10_input
+
+name: flatten_2
+trainable: True
+dtype: float32
+data_format: channels_last
+
+name: dense_10
+trainable: True
+dtype: float32
+batch_input_shape: (None, 18)
+units: 8
+activation: relu
+use_bias: True
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: dense_12
+trainable: True
+dtype: float32
+units: 4
+activation: linear
+use_bias: True
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: dense_11
+trainable: True
+dtype: float32
+units: 4
+activation: relu
+use_bias: True
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: activation_53
+trainable: True
+dtype: float32
+activation: relu
+
+name: concatenate_2
+trainable: True
+dtype: float32
+axis: -1
+
+name: dense_13
+trainable: True
+dtype: float32
+units: 8
+activation: relu
+use_bias: True
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: dense_14
+trainable: True
+dtype: float32
+units: 4
+activation: softmax
+use_bias: True
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: Adam
+learning_rate: 7.999999797903001e-05
+decay: 5e-06
+beta_1: 0.8999999761581421
+beta_2: 0.9990000128746033
+epsilon: 1e-07
+amsgrad: False
+

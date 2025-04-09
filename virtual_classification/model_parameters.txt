@@ -1,0 +1,250 @@
+Model: "model_5"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_3 (InputLayer)           [(None, 240, 108, 3  0           []                               
+                                )]                                                                
+                                                                                                  
+ conv2d_2 (Conv2D)              (None, 240, 108, 16  448         ['input_3[0][0]']                
+                                )                                                                 
+                                                                                                  
+ activation_6 (Activation)      (None, 240, 108, 16  0           ['conv2d_2[0][0]']               
+                                )                                                                 
+                                                                                                  
+ batch_normalization_4 (BatchNo  (None, 240, 108, 16  64         ['activation_6[0][0]']           
+ rmalization)                   )                                                                 
+                                                                                                  
+ max_pooling2d_2 (MaxPooling2D)  (None, 120, 54, 16)  0          ['batch_normalization_4[0][0]']  
+                                                                                                  
+ flatten_2 (Flatten)            (None, 103680)       0           ['max_pooling2d_2[0][0]']        
+                                                                                                  
+ dense_14 (Dense)               (None, 16)           1658896     ['flatten_2[0][0]']              
+                                                                                                  
+ activation_7 (Activation)      (None, 16)           0           ['dense_14[0][0]']               
+                                                                                                  
+ batch_normalization_5 (BatchNo  (None, 16)          64          ['activation_7[0][0]']           
+ rmalization)                                                                                     
+                                                                                                  
+ dense_12_input (InputLayer)    [(None, 18)]         0           []                               
+                                                                                                  
+ dropout_2 (Dropout)            (None, 16)           0           ['batch_normalization_5[0][0]']  
+                                                                                                  
+ dense_12 (Dense)               (None, 8)            152         ['dense_12_input[0][0]']         
+                                                                                                  
+ dense_15 (Dense)               (None, 4)            68          ['dropout_2[0][0]']              
+                                                                                                  
+ dense_13 (Dense)               (None, 4)            36          ['dense_12[0][0]']               
+                                                                                                  
+ activation_8 (Activation)      (None, 4)            0           ['dense_15[0][0]']               
+                                                                                                  
+ concatenate_2 (Concatenate)    (None, 8)            0           ['dense_13[0][0]',               
+                                                                  'activation_8[0][0]']           
+                                                                                                  
+ dense_16 (Dense)               (None, 8)            72          ['concatenate_2[0][0]']          
+                                                                                                  
+ dense_17 (Dense)               (None, 4)            36          ['dense_16[0][0]']               
+                                                                                                  
+==================================================================================================
+Total params: 1,659,836
+Trainable params: 1,659,772
+Non-trainable params: 64
+__________________________________________________________________________________________________
+batch_input_shape: (None, 240, 108, 3)
+dtype: float32
+sparse: False
+ragged: False
+name: input_3
+
+name: conv2d_2
+trainable: True
+dtype: float32
+filters: 16
+kernel_size: (3, 3)
+strides: (1, 1)
+padding: same
+data_format: channels_last
+dilation_rate: (1, 1)
+groups: 1
+activation: linear
+use_bias: True
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: activation_6
+trainable: True
+dtype: float32
+activation: relu
+
+name: batch_normalization_4
+trainable: True
+dtype: float32
+axis: ListWrapper([3])
+momentum: 0.99
+epsilon: 0.001
+center: True
+scale: True
+beta_initializer: {'class_name': 'Zeros', 'config': {}}
+gamma_initializer: {'class_name': 'Ones', 'config': {}}
+moving_mean_initializer: {'class_name': 'Zeros', 'config': {}}
+moving_variance_initializer: {'class_name': 'Ones', 'config': {}}
+beta_regularizer: None
+gamma_regularizer: None
+beta_constraint: None
+gamma_constraint: None
+
+name: max_pooling2d_2
+trainable: True
+dtype: float32
+pool_size: (2, 2)
+padding: valid
+strides: (2, 2)
+data_format: channels_last
+
+name: flatten_2
+trainable: True
+dtype: float32
+data_format: channels_last
+
+name: dense_14
+trainable: True
+dtype: float32
+units: 16
+activation: linear
+use_bias: True
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: activation_7
+trainable: True
+dtype: float32
+activation: relu
+
+name: batch_normalization_5
+trainable: True
+dtype: float32
+axis: ListWrapper([1])
+momentum: 0.99
+epsilon: 0.001
+center: True
+scale: True
+beta_initializer: {'class_name': 'Zeros', 'config': {}}
+gamma_initializer: {'class_name': 'Ones', 'config': {}}
+moving_mean_initializer: {'class_name': 'Zeros', 'config': {}}
+moving_variance_initializer: {'class_name': 'Ones', 'config': {}}
+beta_regularizer: None
+gamma_regularizer: None
+beta_constraint: None
+gamma_constraint: None
+
+batch_input_shape: (None, 18)
+dtype: float32
+sparse: False
+ragged: False
+name: dense_12_input
+
+name: dropout_2
+trainable: True
+dtype: float32
+rate: 0.5
+noise_shape: None
+seed: None
+
+name: dense_12
+trainable: True
+dtype: float32
+batch_input_shape: (None, 18)
+units: 8
+activation: relu
+use_bias: True
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: dense_15
+trainable: True
+dtype: float32
+units: 4
+activation: linear
+use_bias: True
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: dense_13
+trainable: True
+dtype: float32
+units: 4
+activation: relu
+use_bias: True
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: activation_8
+trainable: True
+dtype: float32
+activation: relu
+
+name: concatenate_2
+trainable: True
+dtype: float32
+axis: -1
+
+name: dense_16
+trainable: True
+dtype: float32
+units: 8
+activation: relu
+use_bias: True
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: dense_17
+trainable: True
+dtype: float32
+units: 4
+activation: softmax
+use_bias: True
+kernel_initializer: {'class_name': 'GlorotUniform', 'config': {'seed': None}}
+bias_initializer: {'class_name': 'Zeros', 'config': {}}
+kernel_regularizer: None
+bias_regularizer: None
+activity_regularizer: None
+kernel_constraint: None
+bias_constraint: None
+
+name: Adam
+learning_rate: 0.00019999999494757503
+decay: 5e-06
+beta_1: 0.8999999761581421
+beta_2: 0.9990000128746033
+epsilon: 1e-07
+amsgrad: False
+
